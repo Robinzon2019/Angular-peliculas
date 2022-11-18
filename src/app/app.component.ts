@@ -10,12 +10,12 @@ export class AppComponent  implements OnInit{
   
   title = 'angular-peliculas';
   
-  peliculas: any;
+  peliculasEnCines: any;
  
   ngOnInit(): void {
 
     setTimeout(() => {
-      this.peliculas = [
+      this.peliculasEnCines = [
         {
           titulo: 'Spider-Man',
           fechaLanzamiento: new Date(),
@@ -27,7 +27,11 @@ export class AppComponent  implements OnInit{
           precio: 300.99                                          
         }
       ];
-    }, 1000);
+    }, 3000);
 
   }
+
+  peliculasProximosEstrenos = [
+    
+  ];
 }

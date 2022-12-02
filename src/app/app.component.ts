@@ -11,6 +11,7 @@ export class AppComponent  implements OnInit{
   title = 'angular-peliculas';
   
   peliculasEnCines: any;
+  peliculasProximosEstrenos = [];
  
   ngOnInit(): void {
 
@@ -31,7 +32,7 @@ export class AppComponent  implements OnInit{
 
   }
 
-  peliculasProximosEstrenos = [
-    
-  ];
+  manejarRated(voto: number): void {
+    alert(voto);
+  }
 }

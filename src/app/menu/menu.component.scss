@@ -1,0 +1,18 @@
+nav{
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #3D54C0;
+    padding: 25px;
+}
+
+nav .navbar-brand{
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    font-size: 2rem;
+    color: white;
+}

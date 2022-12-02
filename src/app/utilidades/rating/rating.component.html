@@ -1,0 +1,8 @@
+<i  *ngFor="let i of maximoRatingArr; let index = index"
+    (mouseenter)="manejarMouseEnter(index)"
+    (mouseleave)="manejarMouseLeave()"
+    (click)="rate(index)"
+    [ngClass]="{checked : ratingSeleccionado > index}" 
+    class="fa-solid fa-star"
+>
+</i>

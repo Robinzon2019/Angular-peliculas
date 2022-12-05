@@ -1,9 +1,24 @@
 <!-- As a link -->
 <nav class="navbar">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <i class="fa-solid fa-film icon"></i> 
-      <label class="ms-2 text-white">Angular Peliculas</label>
-    </a>
+    <div class="header">
+      <a routerLink="" class="navbar-brand principal-title-text-container" href="#">
+        <i class="fa-solid fa-film icon"></i> 
+        <label class="ms-2 text-white" id="principal-title-text">Angular Películas</label>
+      </a>
+      <div class="btn-menu-container">
+        <a routerLink="/generos" class="btn-menu">Géneros</a>
+      </div>
+      <div class="btn-menu-container">
+        <a routerLink="/actores" class="btn-menu">Actores</a>
+      </div>
+      <div class="btn-menu-container">
+        <a routerLink="/cines" class="btn-menu">Cines</a>
+      </div>
+      <div class="btn-menu-container">
+        <a routerLink="/peliculas/crear" class="btn-menu">Crear Película</a>
+      </div>
+     
+    </div>
   </div>
 </nav>

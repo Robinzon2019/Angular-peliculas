@@ -5,6 +5,7 @@ nav{
     z-index: 1000;
     background-color: #3D54C0;
     padding: 25px;
+    width: 100% !important;
 }
 
 nav .navbar-brand{
@@ -12,7 +13,35 @@ nav .navbar-brand{
     align-items: center;
 }
 
+.header {
+    display: flex;
+    align-items: center;
+    width: 60%;
+}
+
 .icon {
     font-size: 2rem;
     color: white;
 }
+
+.menu-buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+#principal-title-text {
+    cursor: pointer;
+}
+
+.principal-title-text-container {
+    margin-right: 5%;
+}
+
+.btn-menu {
+    color: white;
+    text-decoration: none;
+}
+
+.btn-menu-container {
+    margin: 0 2%;
+} 

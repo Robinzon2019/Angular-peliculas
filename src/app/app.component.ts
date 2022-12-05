@@ -6,33 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent  implements OnInit{
+export class AppComponent {
   
-  title = 'angular-peliculas';
-  
-  peliculasEnCines: any;
-  peliculasProximosEstrenos = [];
- 
-  ngOnInit(): void {
 
-    setTimeout(() => {
-      this.peliculasEnCines = [
-        {
-          titulo: 'Spider-Man',
-          fechaLanzamiento: new Date(),
-          precio: 1400.99                                          
-        },
-        {
-          titulo: 'Moana',
-          fechaLanzamiento: new Date('2016-11-14'),
-          precio: 300.99                                          
-        }
-      ];
-    }, 3000);
-
-  }
-
-  manejarRated(voto: number): void {
-    alert(voto);
-  }
 }

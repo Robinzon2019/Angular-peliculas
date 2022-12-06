@@ -1,0 +1,38 @@
+<h2 class="mt-4">Buscar películas</h2>
+
+<form [formGroup]="form" class="mb-5">
+    <div class="filtros">
+        <div class="form-group mx-sm-3 mb-2 mt-4">
+            <label for="titulo">Título</label>
+            <input type="text" class="form-control filtro" id="titulo" formControlName="titulo">
+        </div>
+    
+        <div class="form-group mx-sm-3 mb-2 mt-4">
+            <select class="form-control mt-4 filtro" formControlName="generoId">
+                <option value="0">--Seleccione un género--</option>
+                <option *ngFor="let genero of generos" [value]="genero.id">
+                    {{ genero.nombre }}
+                </option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group mx-sm-3 mt-4">
+        <input type="checkbox" formControlName="proximosEstrenos" id="proximosEstrenos" class="form-check-input me-2">
+        <label for="proximosEstrenos">Próximos Estrenos</label>
+    </div>
+
+    <div class="form-group mx-sm-3 mb-4">
+        <input type="checkbox" formControlName="enCines" id="enCines" class="form-check-input me-2">
+        <label for="enCines">En cines</label>
+    </div>
+
+    <div>
+        <button  class="btn btn-danger" (click)="limpiar()">Limpiar</button>
+    </div>
+
+</form>
+
+<app-listado-peliculas [peliculas]="peliculas"></app-listado-peliculas>
+
+

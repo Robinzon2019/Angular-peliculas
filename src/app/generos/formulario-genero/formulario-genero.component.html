@@ -1,10 +1,10 @@
 <form (submit)="guardarCambios()" [formGroup]="form">
     <label for="nombre">Nombre</label>
-    <input type="text" class="form-control" id="nombre" formControlName="nombre" [(ngModel)]="valorInput" (click)="validarCampoNombre()" (input)="validarCampoNombre()">
+    <input type="text" class="form-control" id="nombre" formControlName="nombre" (input)="validarFormulario()">
     <div class="alert alert-danger mt-2" *ngIf="nombreValido === false">{{ obtenerErrorCampoNombre() }}</div>
 
     <div class="mt-4">
-        <button class="btn" id="btn-save" [disabled]="form.invalid">Guardar cambios</button>
+        <button class="btn" id="btn-save" [disabled]="validarFormulario() === false">Guardar cambios</button>
         <a class="btn btn-danger" routerLink="/generos">Cancelar</a>   
     </div>
 </form>

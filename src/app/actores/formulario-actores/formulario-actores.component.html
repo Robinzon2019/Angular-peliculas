@@ -1,8 +1,8 @@
-<form [formGroup]="form" (submit)="onSubmit()">
+<form [formGroup]="form" (submit)="guardarCambios()">
     <div>
         <label for="nombre">Nombre</label>
         <input type="text" class="form-control" id="nombre" formControlName="nombre" #nombre>
-        <div class="alert alert-danger mt-2" *ngIf="nombre.value === ''">El campo nombre es requerido</div>
+        <div class="alert alert-danger mt-2" *ngIf="nombreValido === false">{{ obtenerErrorCampoNombre() }}</div>
     </div>
 
     <div>
@@ -10,8 +10,10 @@
         <input type="date" name="" id="" formControlName="fechaNacimiento" class="form-control">
     </div>
 
+    <app-input-img (archivoSeleccionado)="getArchivoSeleccionado($event)"></app-input-img>
+
     <div class="mt-4">
-        <button class="btn" id="btn-save" [disabled]="form.invalid">Guardar cambios</button>
+        <button class="btn" id="btn-save" [disabled]="validarFormulario() === false">Guardar cambios</button>
         <a class="btn btn-danger" routerLink="/actores">Cancelar</a>   
     </div>
 </form>

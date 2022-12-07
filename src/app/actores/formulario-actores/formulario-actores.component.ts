@@ -1,6 +1,8 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { actorCreacionDTO } from '../actor';
+import { primeraLetraMayuscula } from 'src/app/utilidades/validadores/primeraLetraMayuscula';
+import { formatDate } from 'src/app/utilidades/funciones/utilidades';
 
 @Component({
   selector: 'app-formulario-actores',
@@ -13,22 +15,78 @@ export class FormularioActoresComponent implements OnInit {
   @Output()
   submit: EventEmitter<actorCreacionDTO> = new EventEmitter<actorCreacionDTO>();
 
-  constructor(private formBuilder: FormBuilder) { }
+  @Input()
+  modelo!: actorCreacionDTO;
+  nombreValido = true;
 
+  constructor(private formBuilder: FormBuilder) { }
+ 
   ngOnInit(): void {
+
     this.form = this.formBuilder.group({
       nombre: [ '', {
         validators: [
-          Validators.required
+          Validators.required,
+          Validators.minLength(3), 
+          primeraLetraMayuscula()
         ]
       }],
 
-      fechaNacimiento: ''
+      fechaNacimiento: '',
+      foto: ''
     });
+
+    if(this.modelo !== undefined){
+      let fecha =  formatDate(this.modelo.fechaNacimiento);
+      this.form.controls['nombre'].setValue(this.modelo.nombre);
+      this.form.controls['fechaNacimiento'].setValue(fecha);
+      // this.form.patchValue(this.modelo);
+    }
+
   }
 
-  onSubmit(): void{
-    this.submit.emit(this.form.value);
+  guardarCambios(): void {
+    if(this.validarFormulario() === true){
+      this.submit.emit(this.form.value);
+    }
   }
 
+  obtenerErrorCampoNombre() {
+    var campo = this.form.get('nombre');
+
+    if(campo?.hasError('required')){
+      return 'El campo nombre es requerido';
+    }
+
+    if(campo?.hasError('minlength')){
+      return 'La longitud mínima es de 3 caracteres';
+    }
+
+    if(campo?.hasError('primeraLetraMayuscula')){
+      return campo.getError('primeraLetraMayuscula').mensaje;
+    }
+
+    return '';
+  }
+
+  validarFormulario(): boolean{
+
+    if( (this.form.get('nombre')?.value !== "") && 
+        (this.form.get('nombre')?.value[0] === this.form.get('nombre')?.value[0].toUpperCase()) &&
+        (this.form.get('nombre')?.value.length >= 3) ){
+
+      this.nombreValido = true;
+      return this.nombreValido;
+    }
+    else{
+      this.nombreValido = false;
+      return this.nombreValido;
+    }
+
+  }
+
+  getArchivoSeleccionado(file: any): void {
+    // alert('File: ' + JSON.stringify(file));
+    this.form.get('foto')?.setValue(file);
+  }
 }

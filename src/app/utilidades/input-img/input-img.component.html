@@ -1,0 +1,12 @@
+<div class="mt-3">
+    <button type="button" class="btn btn-light border" (click)="fileInput.click()">
+        Seleccionar imagen
+    </button>
+    <input type="file" hidden #fileInput (change)="change($event)">
+</div>
+
+<div>
+    <div *ngIf="imagenBase64">
+        <img [src]="imagenBase64"> 
+    </div>
+</div> 

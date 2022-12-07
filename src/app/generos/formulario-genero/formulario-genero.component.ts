@@ -13,7 +13,6 @@ export class FormularioGeneroComponent implements OnInit {
 
   form!: FormGroup;
   nombreValido = true;
-  valorInput = "";
 
   @Output()
   onSubmit: EventEmitter<generoCreacionDTO> = new EventEmitter<generoCreacionDTO>();
@@ -34,14 +33,16 @@ export class FormularioGeneroComponent implements OnInit {
       }]
     });
 
-    if(this.modelo !== undefined) {
+    if(this.modelo !== undefined){
+      //this.form.controls['nombre'].setValue('Comedia');
       this.form.patchValue(this.modelo);
-      console.log('Modelo: ' + JSON.stringify(this.modelo.nombre));
     }
   }
 
   guardarCambios(): void {
-    this.onSubmit.emit(this.form.value);
+    if(this.validarFormulario() === true){
+      this.onSubmit.emit(this.form.value);
+    }
   }
 
   obtenerErrorCampoNombre() {
@@ -62,30 +63,18 @@ export class FormularioGeneroComponent implements OnInit {
     return '';
   }
 
-  validarCampoNombre(): void {
+  validarFormulario(): boolean{
 
-    // Validando el escenario de que se quiera enviar el campo vacío
-    if(this.valorInput === ""){
-      this.nombreValido = false;
+    if( (this.form.get('nombre')?.value !== "") && 
+        (this.form.get('nombre')?.value[0] === this.form.get('nombre')?.value[0].toUpperCase()) &&
+        (this.form.get('nombre')?.value.length >= 3) ){
+
+      this.nombreValido = true;
+      return this.nombreValido;
     }
     else{
-      this.nombreValido = true;
-    }
-
-    // Validando el escenario de que se quiera enviar el campo con una longitud de menos de 3 caracteres
-    if(this.valorInput.length < 3){
       this.nombreValido = false;
-    }
-    else {
-      this.nombreValido = true;
-    }
-
-    // Validando el escenario de que se quiera enviar el campo con la primera letra minuscula, para validar esto creamos una validacion personalizada
-    if(this.valorInput[0] !== this.valorInput[0].toUpperCase()){
-      this.nombreValido = false;
-    }
-    else {
-      this.nombreValido = true;
+      return this.nombreValido;
     }
 
   }

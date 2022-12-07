@@ -15,8 +15,8 @@ export class CrearActorComponent implements OnInit {
   }
 
   guardarCambios(actor: actorCreacionDTO): void{
-    console.log(actor);
-    this.router.navigate([ '/actores' ]);
+    console.log('Desde crear actor: ' + JSON.stringify(actor));
+    // this.router.navigate([ '/actores' ]);
   }
 
 }

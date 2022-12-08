@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { actorCreacionDTO } from '../actor';
+import { actorCreacionDTO, actorDTO } from '../actor';
 import { primeraLetraMayuscula } from 'src/app/utilidades/validadores/primeraLetraMayuscula';
 import { formatDate } from 'src/app/utilidades/funciones/utilidades';
 
@@ -16,7 +16,7 @@ export class FormularioActoresComponent implements OnInit {
   submit: EventEmitter<actorCreacionDTO> = new EventEmitter<actorCreacionDTO>();
 
   @Input()
-  modelo!: actorCreacionDTO;
+  modelo!: actorDTO;
   nombreValido = true;
 
   constructor(private formBuilder: FormBuilder) { }
@@ -37,10 +37,10 @@ export class FormularioActoresComponent implements OnInit {
     });
 
     if(this.modelo !== undefined){
-      let fecha =  formatDate(this.modelo.fechaNacimiento);
-      this.form.controls['nombre'].setValue(this.modelo.nombre);
-      this.form.controls['fechaNacimiento'].setValue(fecha);
-      // this.form.patchValue(this.modelo);
+      // let fecha =  formatDate(this.modelo.fechaNacimiento);
+      // this.form.controls['nombre'].setValue(this.modelo.nombre);
+      // this.form.controls['fechaNacimiento'].setValue(fecha);
+      this.form.patchValue(this.modelo);
     }
 
   }
@@ -86,7 +86,7 @@ export class FormularioActoresComponent implements OnInit {
   }
 
   getArchivoSeleccionado(file: any): void {
-    // alert('File: ' + JSON.stringify(file));
+    // alert('File seleccionado: ' + JSON.stringify(file));
     this.form.get('foto')?.setValue(file);
   }
 }

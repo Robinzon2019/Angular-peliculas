@@ -1,0 +1,15 @@
+
+.contenedor-biografia{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.contenedor-biografia label {
+    margin: 2% 0;
+    font-weight: bold;
+}
+
+textarea {
+    height: 300px;
+}

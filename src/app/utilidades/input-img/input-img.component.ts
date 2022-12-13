@@ -14,7 +14,7 @@ export class InputImgComponent implements OnInit {
   archivoSeleccionado: EventEmitter<File> = new EventEmitter<File>();
 
   @Input()
-  urlImagenActual!: string;
+  urlImagenActual: string | undefined;
   
   constructor() { }
 

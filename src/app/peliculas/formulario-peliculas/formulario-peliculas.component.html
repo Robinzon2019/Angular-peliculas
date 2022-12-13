@@ -1,0 +1,46 @@
+<form [formGroup]="form" (submit)="guardarCambios()">
+    <div class="my-4">
+        <label for="">Título</label>
+        <input type="text" formControlName="titulo" class="form-control mb-2">
+        <div class="alert alert-danger" *ngIf="form.invalid">
+            El campo titulo es requerido
+        </div>
+    </div>
+
+    <div class="my-4">
+        <input type="checkbox" formControlName="enCines" id="enCines" class="form-check-input me-2"> 
+        <label for="enCines">En cines</label>  
+    </div>
+
+    <div class="my-4">
+        <label for="">Trailer</label>
+        <input type="text" formControlName="trailer" class="form-control mb-2">
+    </div>
+
+    <div class="my-4">
+        <label for="">Fecha de Lanzamiento</label>
+        <input type="date" formControlName="fechaLanzamiento" class="form-control mb-2">
+    </div>
+
+    <div class="my-4">
+        <h4>Seleccionar poster</h4>
+        <app-input-img
+            [urlImagenActual]="modelo?.poster" 
+            (archivoSeleccionado)="archivoSeleccionado($event)"
+        ></app-input-img>
+    </div>
+
+    <div class="my-4">
+        <h4>Resumen de la película</h4>
+        <app-input-markdown 
+            [encabezado]="'Resumen'"
+            [contenidoMarkdown]="modelo?.resumen" 
+            (changeMarkdown)="changeMarkdown($event)"
+        ></app-input-markdown>
+    </div>
+
+    <div class="mt-4">
+        <button class="btn" id="btn-save" [disabled]="form.invalid">Guardar cambios</button>
+        <a class="btn btn-danger" routerLink="/">Cancelar</a>   
+    </div>
+</form>

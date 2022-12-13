@@ -10,7 +10,15 @@
         <input type="date" name="" id="" formControlName="fechaNacimiento" class="form-control">
     </div>
 
-    <app-input-img  [urlImagenActual]="modelo.foto" (archivoSeleccionado)="getArchivoSeleccionado($event)"></app-input-img>
+    <ng-container *ngIf="modelo !== undefined">
+        <app-input-img  [urlImagenActual]="modelo.foto" (archivoSeleccionado)="getArchivoSeleccionado($event)"></app-input-img>
+    </ng-container>
+
+    <ng-container *ngIf="modelo === undefined">
+        <app-input-img class="mb-3" (archivoSeleccionado)="getArchivoSeleccionado($event)"></app-input-img>
+    </ng-container>
+
+    <app-input-markdown  [encabezado]="'biografía'" class="mt-3" (changeMarkdown)="cambioMarkdown($event)"></app-input-markdown>
 
     <div class="mt-4">
         <button class="btn" id="btn-save" [disabled]="validarFormulario() === false">Guardar cambios</button>

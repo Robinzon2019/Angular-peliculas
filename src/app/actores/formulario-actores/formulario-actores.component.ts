@@ -2,7 +2,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { actorCreacionDTO, actorDTO } from '../actor';
 import { primeraLetraMayuscula } from 'src/app/utilidades/validadores/primeraLetraMayuscula';
-import { formatDate } from 'src/app/utilidades/funciones/utilidades';
 
 @Component({
   selector: 'app-formulario-actores',
@@ -13,7 +12,7 @@ export class FormularioActoresComponent implements OnInit {
 
   form!: FormGroup;
   @Output()
-  submit: EventEmitter<actorCreacionDTO> = new EventEmitter<actorCreacionDTO>();
+  OnSubmit: EventEmitter<actorCreacionDTO> = new EventEmitter<actorCreacionDTO>();
 
   @Input()
   modelo!: actorDTO;
@@ -33,7 +32,8 @@ export class FormularioActoresComponent implements OnInit {
       }],
 
       fechaNacimiento: '',
-      foto: ''
+      foto: '',
+      biografia: ''
     });
 
     if(this.modelo !== undefined){
@@ -47,7 +47,7 @@ export class FormularioActoresComponent implements OnInit {
 
   guardarCambios(): void {
     if(this.validarFormulario() === true){
-      this.submit.emit(this.form.value);
+      this.OnSubmit.emit(this.form.value);
     }
   }
 
@@ -88,5 +88,9 @@ export class FormularioActoresComponent implements OnInit {
   getArchivoSeleccionado(file: any): void {
     // alert('File seleccionado: ' + JSON.stringify(file));
     this.form.get('foto')?.setValue(file);
+  }
+
+  cambioMarkdown(texto: any){
+    this.form.get('biografia')?.setValue(texto);
   }
 }

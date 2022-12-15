@@ -22,8 +22,8 @@ export class InputMarkdownComponent implements OnInit {
   }
 
   inputTextArea(texto: any): void {
-    this.contenidoMarkdown = texto.target.value;
-    this.changeMarkdown.emit(this.contenidoMarkdown);
+    // this.contenidoMarkdown = texto.target.value;
+    this.changeMarkdown.emit(texto.target.value);
   }
 
 }

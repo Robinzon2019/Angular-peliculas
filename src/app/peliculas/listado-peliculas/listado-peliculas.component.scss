@@ -2,10 +2,10 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    align-items: center;
 }
 
 .pelicula-contenedor {
+    align-items: center;
     margin-right: 2%;
     margin-bottom: 10px;
     text-align: center;
@@ -39,4 +39,20 @@ button {
 
 #btn-editar:hover {
     background-color: #5568be;
+}
+
+@media (max-width: 576px) {
+    .pelicula-contenedor {
+        width: 100%;
+        margin-bottom: 10%;
+    }
+
+    .pelicula-contenedor img {
+        width: 100%;
+        height: auto;
+    }
+
+    .pelicula-contenedor p {
+        margin-bottom: 0;
+    }
 }

@@ -3,3 +3,6 @@
 @import "../node_modules/bootstrap/scss/bootstrap";
 
 @import url("https://unpkg.com/leaflet@1.9.3/dist/leaflet.css");
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

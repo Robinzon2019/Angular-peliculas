@@ -1,29 +1,30 @@
-<nav class="navbar">
+<nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
-    <div class="header">
-      <a routerLink="" class="navbar-brand principal-title-text-container" href="#">
-        <i class="fa-solid fa-film icon"></i> 
-        <label class="ms-2 text-white" id="principal-title-text">Angular Películas</label>
-      </a>
-      <div class="btn-menu-container">
-        <a routerLink="/peliculas/buscar" class="btn-menu">
-          <i class="fa-solid fa-magnifying-glass"></i>
-          Buscar películas
-        </a>
-      </div>
-      <div class="btn-menu-container">
-        <a routerLink="/generos" class="btn-menu">Géneros</a>
-      </div>
-      <div class="btn-menu-container">
-        <a routerLink="/actores" class="btn-menu">Actores</a>
-      </div>
-      <div class="btn-menu-container">
-        <a routerLink="/cines" class="btn-menu">Cines</a>
-      </div>
-      <div class="btn-menu-container">
-        <a routerLink="/peliculas/crear" class="btn-menu">Crear Película</a>
-      </div>
-     
+    <a class="navbar-brand btn-menu" href="#">Angular Películas</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link btn-menu" aria-current="page" routerLink="/peliculas/buscar">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            Buscar películas
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn-menu" aria-current="page" routerLink="/generos">Géneros</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn-menu" routerLink="/actores">Actores</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn-menu" routerLink="/cines">Cines</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn-menu" routerLink="/peliculas/crear">Crear Película</a>
+        </li>
+      </ul>
     </div>
   </div>
 </nav>

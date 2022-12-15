@@ -1,0 +1,68 @@
+<form>
+    <div>
+        <input 
+            type="text" 
+            placeholder="Seleccione los actores"
+            [formControl]="control"
+            (keyup)="filtrarActor($event)"
+            class="form-control"
+            [(ngModel)]="nombreActorSelecionado"
+        >
+        <ul *ngIf="filteredActores.length > 0" id="listaActoresFiltrados">
+            	<li *ngFor="let actor of filteredActores" (click)="seleccionarActor(actor)">
+                    <img [src]="actor.foto"> 
+                    {{ actor.nombre }} 
+                </li>
+        </ul>
+
+        <!-- <ul *ngIf="actoresSeleccionados.length > 0" id="listaActoresSeleccionados">
+            <li *ngFor="let actor of actoresSeleccionados">
+                <img [src]="actor.foto"> 
+                {{ actor.nombre }}
+            </li>
+        </ul> -->
+    </div>
+</form>
+
+<table 
+    *ngIf="actoresSeleccionados.length > 0"
+    mat-table
+    [dataSource]="actoresSeleccionados"
+    class="mat-elevation-z8"
+    #table
+>
+
+    <ng-container matColumnDef="imagen">
+        <th mat-header-cell *matHeaderCellDef="">No.</th>
+        <td mat-cell *matCellDef="let element">
+            <img style="width: 50px;" [src]="element.foto" />
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef="">Nombre</th>
+        <td mat-cell *matCellDef="let element">
+            {{ element.nombre }}
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="personaje">
+        <th mat-header-cell *matHeaderCellDef="">Personaje</th>
+        <td mat-cell *matCellDef="let element">
+            <div style="margin-right: 10px;"> 
+                <input type="text" [(ngModel)]="element.personaje" placeholder="Personaje" />
+            </div>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef="">Acción</th>
+        <td mat-cell *matCellDef="let element">
+           <!-- <mat-icon mat-list-icon (click)="eliminar(element)">close</mat-icon> -->
+           <i class="fa-sharp fa-solid fa-xmark" (click)="eliminar(element)" style="cursor: pointer; margin-left: 10px; vertical-align: middle;"></i>
+        </td>
+    </ng-container>
+
+    <tr mat-row *matRowDef="let row; columns: columnasAMostrar"></tr>
+
+</table>

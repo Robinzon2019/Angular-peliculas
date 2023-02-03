@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from "@angular/common/http";
 
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MarkdownModule } from 'ngx-markdown';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { AppComponent } from './app.component';
 import { ListadoPeliculasComponent } from './peliculas/listado-peliculas/listado-peliculas.component';
@@ -37,6 +39,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MostrarErroresComponent } from './tilidades/mostrar-errores/mostrar-errores.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +70,8 @@ import { MatIconModule } from '@angular/material/icon';
     MapaComponent,
     FormularioPeliculasComponent,
     SelectorMultipleComponent,
-    AutocompleteActoresComponent
+    AutocompleteActoresComponent,
+    MostrarErroresComponent
   ],
   imports: [
     BrowserModule,
@@ -78,7 +83,12 @@ import { MatIconModule } from '@angular/material/icon';
     BrowserAnimationsModule,
     MatTableModule,
     MatFormFieldModule,
-    MatIconModule
+    MatIconModule,
+    HttpClientModule,
+    MatPaginatorModule,
+    MatProgressSpinnerModule
+  ],
+  exports: [
   ],
   providers: [],
   bootstrap: [AppComponent]

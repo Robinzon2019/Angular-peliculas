@@ -6,3 +6,18 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.tabla-indice{
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.btn-editar {
+    background-color: #3D54C0; 
+    color: white
+}
+
+.btn-editar:hover {
+    background-color: #5568be;
+}
+
